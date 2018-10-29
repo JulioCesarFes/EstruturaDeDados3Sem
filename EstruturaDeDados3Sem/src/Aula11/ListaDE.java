@@ -100,8 +100,17 @@ public class ListaDE {
             primeiro = novo;
             return;
         }
-        for (int i = 0; i < pos; i++) {
-            
+        No atual, proximo;
+        atual = primeiro;
+        proximo = atual.prox;
+        for (int i = 0; i < pos && atual.prox != null; i++) {
+            atual = atual.prox;
+            proximo = atual.prox;
         }
+        novo.prox = atual.prox;
+        novo.ant = atual;
+        atual.prox = novo;
+        if(novo.prox == null) ultimo = novo;
+        else proximo.ant = novo;
     }
 }
